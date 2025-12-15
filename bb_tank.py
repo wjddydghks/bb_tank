@@ -5,7 +5,7 @@ from ultralytics import YOLO
 
 
 class BBTankComplete:
-    def __init__(self, port='/dev/ttyUSB0', baudrate=115200):
+    def __init__(self, port='/dev/ttyACM0', baudrate=115200):
         print("=== BB탱크 자동 조준 시스템 시작 ===\n")
 
         # YOLO
@@ -209,5 +209,5 @@ if __name__ == "__main__":
     os.system("sudo systemctl restart nvargus-daemon")
     time.sleep(3)
 
-    tank = BBTankComplete(port='/dev/ttyUSB0', baudrate=115200)
+    tank = BBTankComplete(port='/dev/ttyACM0', baudrate=115200)
     tank.run()
