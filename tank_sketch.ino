@@ -38,7 +38,7 @@ bool hasTarget = false;
 int currentYaw = 90;
 
 /* ================= 주행 ================= */
-// 전진 (너가 준 값 그대로)
+// 전진 
 void forward() {
   servoLeft.writeMicroseconds(1300);
   servoRight.writeMicroseconds(1700);
@@ -54,12 +54,6 @@ void stopMove() {
   servoRight.writeMicroseconds(1500);
 }
 
-/*
- ⚠️ 중요
- 실제 테스트 기준:
- - 아래 turnLeft()  → 차체가 "왼쪽"으로 회전
- - 아래 turnRight() → 차체가 "오른쪽"으로 회전
-*/
 void turnLeft() {     // ← 왼쪽 회전
   servoLeft.writeMicroseconds(1500);
   servoRight.writeMicroseconds(1700);
@@ -89,13 +83,12 @@ void stopTurret() {
 }
 
 void aimTurret() {
-  // 중앙 범위 넓게
   if (abs(xErr) < 60) {
     stopTurret();
     return;
   }
 
-  int speed = 12; // 느리게 (조준 안정)
+  int speed = 12; 
   if (xErr > 0) {
     servoYaw.writeMicroseconds(1500 + speed);
     currentYaw++;
